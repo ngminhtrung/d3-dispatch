@@ -1,3 +1,5 @@
+**Ghi chú**: Phần bên dưới đã không còn đúng như tài liệu nguyên gốc mà đã bị thêm vào các ghi chú cá nhân của [ngminhtrung](https://github.com/ngminhtrung).
+
 # d3-dispatch
 
 Dispatching is a convenient mechanism for separating concerns with loosely-coupled code: register named callbacks and then call them with arbitrary arguments. A variety of D3 components, such as [d3-request](https://github.com/d3/d3-request), use this mechanism to emit events to listeners. Think of this like Node’s [EventEmitter](https://nodejs.org/api/events.html), except every listener has a well-defined name so it’s easy to remove or replace them.
@@ -8,13 +10,29 @@ For example, to create a dispatch for *start* and *end* events:
 var dispatch = d3.dispatch("start", "end");
 ```
 
+Object `dispatch` sẽ trông như sau:
+
+![object dispatch](./images/Selection_021.png)
+
+
 You can then register callbacks for these events using [*dispatch*.on](#dispatch_on):
 
 ```js
-dispatch.on("start", callback1);
-dispatch.on("start.foo", callback2);
-dispatch.on("end", callback3);
+const callback01 = () => {console.log("callback01")};
+const callback02 = () => {console.log("callback02")};
+const callback03 = () => {console.log("callback03")};
+dispatch.on("start", callback01);
+dispatch.on("start.foo", callback02);
+dispatch.on("end", callback03);
 ```
+
+Object `dispatch` sẽ lần lượt như sau:
+
+![object dispatch](./images/Selection_022.png)
+
+![object dispatch](./images/Selection_023.png)
+
+![object dispatch](./images/Selection_024.png)
 
 Then, you can invoke all the *start* callbacks using [*dispatch*.call](#dispatch_call) or [*dispatch*.apply](#dispatch_apply):
 
